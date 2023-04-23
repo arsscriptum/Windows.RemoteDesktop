@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D75E5AD6-EE2A-46CE-8EAF-9BD3D5777B37}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>RemoteDesktop_Library</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(ProjectDir)cfg\dejainsight.props" Condition="'$(dejainsight_integration)' == ''" />
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)lib\$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(PlatformTarget)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)lib\$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(PlatformTarget)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)lib\$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(PlatformTarget)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)lib\$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(PlatformTarget)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Common\src;$(AdditionalIncludeDirectories);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4018;4061;4101;4244;4267;4277;4365;4464;4514;4571;4623;4625;4626;4710;4711;4738;4820;4996;5026;5027;5045;5246;5264;5258</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DisableSpecificWarnings Condition="'$(CHARLS_ALL_WARNINGS)'!=''">4018;4061;4101;4244;4267;4277;4365;4464;4514;4571;4623;4625;4626;4710;4711;4738;4820;4996;5026;5027;5045;5246;5264;5258</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>turbojpeg-static_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>Userenv.lib;Winhttp.lib;comsuppw.lib;Iphlpapi.lib;ole32.lib;oleaut32.lib;netapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Libjpeg-Turbo.1.4.2.15\lib\native\v140\windesktop\msvcstl\$(Platform)\$(Configuration);$(SolutionDir)packages\cryptopp.5.6.3.2\lib\native\v142\windesktop\msvcstl\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>turbojpeg-static_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>Userenv.lib;Winhttp.lib;comsuppw.lib;Iphlpapi.lib;ole32.lib;oleaut32.lib;netapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Libjpeg-Turbo.1.4.2.15\lib\native\v140\windesktop\msvcstl\$(Platform)\$(Configuration);$(SolutionDir)packages\cryptopp.5.6.3.2\lib\native\v142\windesktop\msvcstl\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <AdditionalOptions>/Qpar /Qpar-report:1 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>turbojpeg-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>Userenv.lib;Winhttp.lib;comsuppw.lib;Iphlpapi.lib;ole32.lib;oleaut32.lib;netapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Libjpeg-Turbo.1.4.2.15\lib\native\v140\windesktop\msvcstl\$(Platform)\$(Configuration);$(SolutionDir)packages\cryptopp.5.6.3.2\lib\native\v142\windesktop\msvcstl\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <AdditionalOptions>/Qpar /Qpar-report:1 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>turbojpeg-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>Userenv.lib;Winhttp.lib;comsuppw.lib;Iphlpapi.lib;ole32.lib;oleaut32.lib;netapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Libjpeg-Turbo.1.4.2.15\lib\native\v140\windesktop\msvcstl\$(Platform)\$(Configuration);$(SolutionDir)packages\cryptopp.5.6.3.2\lib\native\v142\windesktop\msvcstl\$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="atlrx.h" />
+    <ClInclude Include="Clipboard.h" />
+    <ClInclude Include="Clipboard_Monitor.h" />
+    <ClInclude Include="Clipboard_Wrapper.h" />
+    <ClInclude Include="CommonNetwork.h" />
+    <ClInclude Include="Compression_Handler.h" />
+    <ClInclude Include="Concurrent_Queue.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="Console.h" />
+    <ClInclude Include="Delegate.h" />
+    <ClInclude Include="Desktop_Background.h" />
+    <ClInclude Include="Desktop_Monitor.h" />
+    <ClInclude Include="EventLog.h" />
+    <ClInclude Include="Gateway.h" />
+    <ClInclude Include="Gateway_Socket.h" />
+    <ClInclude Include="Handle_Wrapper.h" />
+    <ClInclude Include="Encryption.h" />
+    <ClInclude Include="Firewall.h" />
+    <ClInclude Include="Image.h" />
+    <ClInclude Include="INetwork.h" />
+    <ClInclude Include="lz4.h" />
+    <ClInclude Include="lz4frame.h" />
+    <ClInclude Include="lz4hc.h" />
+    <ClInclude Include="MouseCommon.h" />
+    <ClInclude Include="NetworkProcessor.h" />
+    <ClInclude Include="Network_Client.h" />
+    <ClInclude Include="Network_GatewayServer.h" />
+    <ClInclude Include="Network_Server.h" />
+    <ClInclude Include="PacketBufferPool.h" />
+    <ClInclude Include="Ping.h" />
+    <ClInclude Include="ProcessUtils.h" />
+    <ClInclude Include="Rect.h" />
+    <ClInclude Include="NetworkSetup.h" />
+    <ClInclude Include="RegExp.h" />
+    <ClInclude Include="SocketHandler.h" />
+    <ClInclude Include="StringProcess.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Traffic_Monitor.h" />
+    <ClInclude Include="UserInfo.h" />
+    <ClInclude Include="Utilities.h" />
+    <ClInclude Include="VirtualScreen.h" />
+    <ClInclude Include="WinHttpClient.h" />
+    <ClInclude Include="xxhash.h" />
+    <ClInclude Include="$(ProjectDir)..\Common\src\log.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(ProjectDir)..\Common\src\log.cpp" />
+    <ClCompile Include="Clipboard.cpp" />
+    <ClCompile Include="Clipboard_Monitor.cpp" />
+    <ClCompile Include="Clipboard_Wrapper.cpp" />
+    <ClCompile Include="Compression_Handler.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="Desktop_Background.cpp" />
+    <ClCompile Include="Desktop_Monitor.cpp" />
+    <ClCompile Include="Encryption.cpp" />
+    <ClCompile Include="EventLog.cpp" />
+    <ClCompile Include="Firewall.cpp" />
+    <ClCompile Include="Gateway.cpp" />
+    <ClCompile Include="Gateway_Socket.cpp" />
+    <ClCompile Include="Handle_Wrapper.cpp" />
+    <ClCompile Include="Image.cpp">
+      <AssemblerOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NoListing</AssemblerOutput>
+      <AssemblerOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NoListing</AssemblerOutput>
+      <AssemblerOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NoListing</AssemblerOutput>
+      <AssemblerOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NoListing</AssemblerOutput>
+    </ClCompile>
+    <ClCompile Include="INetwork.cpp" />
+    <ClCompile Include="lz4.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="lz4frame.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="lz4hc.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="NetworkProcessor.cpp" />
+    <ClCompile Include="NetworkSetup.cpp" />
+    <ClCompile Include="Network_Client.cpp" />
+    <ClCompile Include="Network_GatewayServer.cpp" />
+    <ClCompile Include="Network_Server.cpp" />
+    <ClCompile Include="Ping.cpp" />
+    <ClCompile Include="ProcessUtils.cpp" />
+    <ClCompile Include="SocketHandler.cpp" />
+    <ClCompile Include="VirtualScreen.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="StringProcess.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Traffic_Monitor.cpp" />
+    <ClCompile Include="UserInfo.cpp" />
+    <ClCompile Include="WinHttpClient.cpp" />
+    <ClCompile Include="xxhash.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\Libjpeg-Turbo.1.4.2.15\build\native\Libjpeg-Turbo.targets" Condition="Exists('..\packages\Libjpeg-Turbo.1.4.2.15\build\native\Libjpeg-Turbo.targets')" />
+    <Import Project="..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-Win32.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-Win32.targets" Condition="Exists('..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-Win32.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-Win32.targets')" />
+    <Import Project="..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-x64.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-x64.targets" Condition="Exists('..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-x64.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-x64.targets')" />
+    <Import Project="..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-Win32.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-Win32.targets" Condition="Exists('..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-Win32.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-Win32.targets')" />
+    <Import Project="..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-x64.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-x64.targets" Condition="Exists('..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-x64.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-x64.targets')" />
+    <Import Project="..\packages\cryptopp.5.6.3.2\build\native\cryptopp.targets" Condition="Exists('..\packages\cryptopp.5.6.3.2\build\native\cryptopp.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Libjpeg-Turbo.1.4.2.15\build\native\Libjpeg-Turbo.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Libjpeg-Turbo.1.4.2.15\build\native\Libjpeg-Turbo.targets'))" />
+    <Error Condition="!Exists('..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-Win32.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-Win32.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-Win32.targets'))" />
+    <Error Condition="!Exists('..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-x64.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-x64.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-dyn-x64.targets'))" />
+    <Error Condition="!Exists('..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-Win32.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-Win32.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-Win32.targets'))" />
+    <Error Condition="!Exists('..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-x64.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-x64.5.6.3\build\native\cryptopp.v140.windesktop.msvcstl.dyn.rt-static-x64.targets'))" />
+    <Error Condition="!Exists('..\packages\cryptopp.5.6.3.2\build\native\cryptopp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cryptopp.5.6.3.2\build\native\cryptopp.targets'))" />
+  </Target>
+</Project>
